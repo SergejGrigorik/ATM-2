@@ -59,6 +59,7 @@ public class Menu {
         System.out.println("\nВведите пароль\t");
         password = scanner.nextLine();
         if (checkPassword.isValidatePassword(password)) {
+            System.out.println("\nПароль введен успешно\t");
             choice();
         } else {
             operationIfInvalidPassword();
@@ -93,11 +94,11 @@ public class Menu {
                 nextOrExit();
                 break;
             case "2" :
-                putMoneyOperation.addMoneyDeposit(number);
+                nextPutOrBack();
                 nextOrExit();
                 break;
             case "3" :
-                withdrawalOperation.withdrawalCash(number);
+                nextWithdrawalOrBack();
                 nextOrExit();
                 break;
             case "4" :
@@ -109,6 +110,42 @@ public class Menu {
                 break;
         }
 
+
+    }
+    private void nextPutOrBack(){
+        System.out.println("\n1.Вернуться в меню\n2.Ввести сумму");
+        String option = scanner.nextLine();
+        switch (option) {
+            case "1":
+                choice();
+                break;
+            case "2":
+                putMoneyOperation.addMoneyDeposit(number);
+                break;
+            default:
+                System.out.println(nonCorrectInput);
+                nextPutOrBack();
+                break;
+
+        }
+
+    }
+    private void nextWithdrawalOrBack(){
+        System.out.println("\n1.Вернуться в меню\n2.Ввести сумму");
+        String option = scanner.nextLine();
+        switch (option) {
+            case "1":
+                choice();
+                break;
+            case "2":
+                withdrawalOperation.withdrawalCash(number);
+                break;
+            default:
+                System.out.println(nonCorrectInput);
+                nextWithdrawalOrBack();
+                break;
+
+        }
 
     }
     private void nextOrExit(){

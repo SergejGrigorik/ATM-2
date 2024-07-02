@@ -27,6 +27,7 @@ public class WriteDataBase {
                 writer.write(card.toString() + '\n');
             }
             writer.flush();
+
         }
         catch(IOException ex){
             System.out.println(ex.getMessage());

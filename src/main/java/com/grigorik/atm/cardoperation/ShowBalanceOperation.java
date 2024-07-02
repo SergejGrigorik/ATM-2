@@ -24,7 +24,7 @@ public class ShowBalanceOperation {
     public void viewBalance(String number) {
         bank = Bank.getInstance();
         cardUnfo = bank.getCards().get(number);
-        System.out.println(cardUnfo.getSum());
+        System.out.println("\nВаш баланс составляет - " + cardUnfo.getSum());
     }
 
 }

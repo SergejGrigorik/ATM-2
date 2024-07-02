@@ -2,7 +2,7 @@ package com.grigorik.atm.cardoperation;
 
 import com.grigorik.atm.writefile.WriteDataBase;
 
-public class Exit {
+public class Exit  {
     private static  Exit exit;
     private WriteDataBase writeDataBase = WriteDataBase.getInstance();
 

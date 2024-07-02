@@ -3,6 +3,7 @@ package com.grigorik.atm.cardoperation;
 import com.grigorik.atm.bank.Bank;
 import com.grigorik.atm.cardEntity.CardUnfo;
 import com.grigorik.atm.chekcorrectinputsum.ParseInputSum;
+import com.grigorik.atm.writefile.WriteDataBase;
 
 import java.util.Scanner;
 
@@ -26,16 +27,18 @@ public class WithdrawalOperation {
 
     public void withdrawalCash(String number){
         cardUnfo = bank.cardUnfo(number);
-        System.out.println("Введите сумму");
+        System.out.println("\nВведите сумму");
         String stringSum = scanner.nextLine();
         if(checkCorrectInput(stringSum)){
             return;
         }
         Double parseSum = parseInputSum.getInstance().getParseSum(stringSum);
         if (checkSum(parseSum)){
+
             cardUnfo.setSum(cardUnfo.getSum() - parseSum);
+            System.out.println("Вы успешно сняли деньги");
         }else {
-            System.out.println("У Вас недостаточно средств\nВаш баланс " + cardUnfo.getSum());
+            System.out.println("У Вас недостаточно средств\nВаш баланс составляет - " + cardUnfo.getSum());
         }
 
     }
