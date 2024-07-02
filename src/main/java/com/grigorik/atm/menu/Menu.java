@@ -31,6 +31,7 @@ public class Menu {
         number = scanner.nextLine();
         if (checkNumber.isValidateNumber(number)) {
             System.out.println("\nНомер введен успешно!");
+            checkPassword.countInputPassword(number);
             inputPassword();
         } else {
             operationIfInvalidNumber();
@@ -57,7 +58,7 @@ public class Menu {
     public void inputPassword() {
         System.out.println("\nВведите пароль\t");
         password = scanner.nextLine();
-        if (checkPassword.isValidatePassword(password, number)) {
+        if (checkPassword.isValidatePassword(password)) {
             choice();
         } else {
             operationIfInvalidPassword();

@@ -11,7 +11,7 @@ public class CheckPassword {
     private static String password;
     private static CheckPassword checkPassword;
     private Bank bank = Bank.getInstance();
-    private static int countAttempt;
+    private int countAttempt;
     private Exit exit = Exit.getInstance();
     private CardUnfo cardUnfo;
     private String block = "block";
@@ -26,10 +26,11 @@ public class CheckPassword {
     }
 
 
-    public boolean isValidatePassword(String passwordInput, String numberInput) {
+    public boolean isValidatePassword(String passwordInput) {
 
-        if (comparePasswordsInputAndBank(passwordInput, numberInput)) {
+        if (comparePasswordInputAndBank(passwordInput)) {
             countAttempt = 0;
+            cardUnfo.setCountInputPassword(countAttempt);
             return true;
 
         }else if (countAttempt == 1) {
@@ -43,15 +44,31 @@ public class CheckPassword {
         return false;
     }
 
-
-    private boolean comparePasswordsInputAndBank(String passwordInput, String numberInput) {
+    public void countInputPassword(String numberInput){
          cardUnfo = bank.getCards().get(numberInput);
+         countAttempt = cardUnfo.getCountInputPassword();
+        if (countAttempt == 0){
+            return;
+        }else if (countAttempt == 2){
+            System.out.println("У вас осталась одна попытка ввести пароль , при введении неверного пароля Ваша карта будет заблокирована на сутки");
+        }else if (countAttempt ==1){
+            System.out.println("У вас осталось две попытки ввести пароль ");
+        }
+
+    }
+
+
+    private boolean comparePasswordInputAndBank(String passwordInput) {
+
         if (cardUnfo.getPassword().equals(passwordInput)) {
             return true;
         }
         countAttempt++;
+        cardUnfo.setCountInputPassword(countAttempt);
         return false;
     }
+
+
 
     private void blockCard(){
         LocalDateTime dateTimeNow = LocalDateTime.now();
@@ -61,6 +78,7 @@ public class CheckPassword {
         System.out.println("Вы ввели 3 раза неправильный пароль , карта будет заблокирована до " + datePasswordBlock);
         cardUnfo.setBlock(block);
         cardUnfo.setDateBlock(datePasswordBlock);
+        cardUnfo.setCountInputPassword(0);
         exit.exitAtm();
     }
 }

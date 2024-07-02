@@ -40,9 +40,8 @@ public class ReaderDataBase {
             cardUnfo.setPassword(dataCard[1].trim());
             cardUnfo.setSum(Double.parseDouble(dataCard[2].trim()));
             cardUnfo.setBlock(dataCard[3].trim());
-            if (dataCard.length == 5) {
-                cardUnfo.setDateBlock(dataCard[4].trim());
-            }
+            cardUnfo.setDateBlock(dataCard[4].trim());
+            cardUnfo.setCountInputPassword(Integer.parseInt(dataCard[5].trim()));
             bank.setCards(numberCard, cardUnfo);
 
         }

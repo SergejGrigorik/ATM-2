@@ -6,6 +6,16 @@ public class CardUnfo {
     private double Sum;
     private String block;
     private String dateBlock;
+    private Integer countInputPassword;
+
+    public Integer getCountInputPassword() {
+        return countInputPassword;
+    }
+
+    public void setCountInputPassword(Integer countInputPassword) {
+        this.countInputPassword = countInputPassword;
+    }
+
 
     public String getDateBlock() {
         return dateBlock;
@@ -52,7 +62,7 @@ public class CardUnfo {
     @Override
     public String toString() {
 
-        return Number + " " + Password + " " + Sum + " " + block + " " + dateBlock;
+        return Number + " " + Password + " " + Sum + " " + block + " " + dateBlock + " " + countInputPassword;
     }
 }
 
