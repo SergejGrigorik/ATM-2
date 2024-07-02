@@ -45,10 +45,6 @@ public class ReaderDataBase {
             }
             bank.setCards(numberCard, cardUnfo);
 
-//        Set<String> collect = lines.collect(Collectors.toSet());
-//        collect.forEach(a -> a);
-//            String path = ClassLoader.getSystemClassLoader().getResource("DataBaseAtmAuthorization").getPath();
-//            "src/main/resources/DataBaseAtmAuthorization"
         }
     }
 }
