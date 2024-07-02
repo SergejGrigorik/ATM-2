@@ -1,4 +1,4 @@
-package com.grigorik.atm.cardEntity;
+package com.grigorik.atm.entity;
 
 public class CardUnfo {
     private String Number;

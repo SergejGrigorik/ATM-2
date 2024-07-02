@@ -1,7 +1,7 @@
 package com.grigorik.atm.writefile;
 
 import com.grigorik.atm.bank.Bank;
-import com.grigorik.atm.cardEntity.CardUnfo;
+import com.grigorik.atm.entity.CardUnfo;
 
 import java.io.FileWriter;
 import java.io.IOException;

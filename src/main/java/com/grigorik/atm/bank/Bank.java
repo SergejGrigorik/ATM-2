@@ -1,6 +1,6 @@
 package com.grigorik.atm.bank;
 
-import com.grigorik.atm.cardEntity.CardUnfo;
+import com.grigorik.atm.entity.CardUnfo;
 
 import java.util.HashMap;
 

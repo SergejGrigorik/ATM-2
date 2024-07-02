@@ -1,4 +1,4 @@
-package com.grigorik.atm.chekcorrectinputsum;
+package com.grigorik.atm.parse;
 
 public class ParseInputSum {
     private  static ParseInputSum parseInputSum;

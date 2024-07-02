@@ -1,9 +1,9 @@
 package com.grigorik.atm.cardoperation;
 
 import com.grigorik.atm.bank.Bank;
-import com.grigorik.atm.cardEntity.CardUnfo;
-import com.grigorik.atm.chekcorrectinputsum.ParseInputSum;
-import com.grigorik.atm.writefile.WriteDataBase;
+import com.grigorik.atm.chekcorrectinputsum.CheckSum;
+import com.grigorik.atm.entity.CardUnfo;
+import com.grigorik.atm.parse.ParseInputSum;
 
 import java.util.Scanner;
 
@@ -11,9 +11,9 @@ public class WithdrawalOperation {
     private static WithdrawalOperation withdrawalOperation;
     private Bank bank = Bank.getInstance();
     private Scanner scanner = new Scanner(System.in);
-    private String regex = "[0-9]+|[0-9]+\\.[0-9]+|[0-9]+,[0-9]+";
     private CardUnfo cardUnfo;
     private ParseInputSum parseInputSum;
+    private CheckSum checkSum = CheckSum.getInstance();
 
     private WithdrawalOperation() {
     }
@@ -29,7 +29,7 @@ public class WithdrawalOperation {
         cardUnfo = bank.cardUnfo(number);
         System.out.println("\nВведите сумму");
         String stringSum = scanner.nextLine();
-        if(checkCorrectInput(stringSum)){
+        if(checkSum.isCorrectInput(stringSum)){
             return;
         }
         Double parseSum = parseInputSum.getInstance().getParseSum(stringSum);
@@ -48,12 +48,6 @@ public class WithdrawalOperation {
         }
         return true;
     }
-    private boolean checkCorrectInput(String sum) {
-        if (!sum.matches(regex)) {
-            System.out.println("ввод должнен содержать только числа");
-            return true;
-        }
-        return false;
-    }
+
 
 }
