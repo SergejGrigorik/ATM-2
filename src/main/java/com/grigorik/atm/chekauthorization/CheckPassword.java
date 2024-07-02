@@ -15,7 +15,6 @@ public class CheckPassword {
     private Exit exit = Exit.getInstance();
     private CardUnfo cardUnfo;
     private String block = "block";
-
     private CheckPassword() {
     }
 

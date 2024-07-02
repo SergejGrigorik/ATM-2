@@ -121,7 +121,7 @@ public class Menu {
                 exit.exitAtm();
                 break;
             default:
-                System.out.println("Некорректный ввод , выберете операцию из списка");
+                System.out.println(nonCorrectInput);
                 nextOrExit();
                 break;
 

@@ -17,7 +17,7 @@ public class Exit {
     }
     public void exitAtm(){
         writeDataBase.updateDateBase();
-        System.out.println("Досвидание");
+        System.out.println("До свидания");
         System.exit(0);
     }
 

@@ -55,8 +55,6 @@ public class CheckNumber {
         } else {
             return false;
         }
-
-
     }
 
     private boolean containsCardInBank(String numberInput) {
@@ -73,9 +71,6 @@ public class CheckNumber {
         if (cardUnfo.getBlock().equals(unlocked) || checkDateBlock()){
             return false;
         }
-//        if (cardUnfo.getBlock().equals(block) && checkDateBlock()) {
-//          return false;
-//        }
         return true;
     }
 
