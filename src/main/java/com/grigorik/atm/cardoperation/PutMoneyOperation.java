@@ -1,7 +1,7 @@
 package com.grigorik.atm.cardoperation;
 
 import com.grigorik.atm.bank.Bank;
-import com.grigorik.atm.chekcorrectinputsum.CheckSum;
+import com.grigorik.atm.chekcorrectinputsum.CorrectInputSum;
 import com.grigorik.atm.entity.CardUnfo;
 import com.grigorik.atm.parse.ParseInputSum;
 
@@ -15,7 +15,7 @@ public class PutMoneyOperation {
     private Bank bank = Bank.getInstance();
     private double limit = 1000000;
     private ParseInputSum parseInputSum;
-    private CheckSum checkSum = CheckSum.getInstance();
+    private CorrectInputSum correctInputSum = CorrectInputSum.getInstance();
 
     private PutMoneyOperation() {
 
@@ -32,7 +32,7 @@ public class PutMoneyOperation {
         cardUnfo = bank.cardUnfo(number);
         System.out.println("\nВведите сумму ");
         String sum = scanner.nextLine();
-        if (checkSum.isCorrectInput(sum)) {
+        if (correctInputSum.isCorrectInput(sum)) {
             return;
         }
         Double parseSum = parseInputSum.getInstance().getParseSum(sum);

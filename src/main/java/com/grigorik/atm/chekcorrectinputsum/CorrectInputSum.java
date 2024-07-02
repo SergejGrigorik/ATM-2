@@ -1,12 +1,12 @@
 package com.grigorik.atm.chekcorrectinputsum;
 
-public class CheckSum {
-    private static CheckSum instance;
+public class CorrectInputSum {
+    private static CorrectInputSum instance;
     private String regex = "[0-9]+|[0-9]+\\.[0-9]+|[0-9]+,[0-9]+";
-    private CheckSum() {}
-    public static CheckSum getInstance() {
+    private CorrectInputSum() {}
+    public static CorrectInputSum getInstance() {
         if (instance == null) {
-            instance = new CheckSum();
+            instance = new CorrectInputSum();
         }
         return instance;
     }

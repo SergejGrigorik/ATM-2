@@ -1,7 +1,7 @@
 package com.grigorik.atm.cardoperation;
 
 import com.grigorik.atm.bank.Bank;
-import com.grigorik.atm.chekcorrectinputsum.CheckSum;
+import com.grigorik.atm.chekcorrectinputsum.CorrectInputSum;
 import com.grigorik.atm.entity.CardUnfo;
 import com.grigorik.atm.parse.ParseInputSum;
 
@@ -13,7 +13,7 @@ public class WithdrawalOperation {
     private Scanner scanner = new Scanner(System.in);
     private CardUnfo cardUnfo;
     private ParseInputSum parseInputSum;
-    private CheckSum checkSum = CheckSum.getInstance();
+    private CorrectInputSum correctInputSum = CorrectInputSum.getInstance();
 
     private WithdrawalOperation() {
     }
@@ -29,7 +29,7 @@ public class WithdrawalOperation {
         cardUnfo = bank.cardUnfo(number);
         System.out.println("\nВведите сумму");
         String stringSum = scanner.nextLine();
-        if(checkSum.isCorrectInput(stringSum)){
+        if(correctInputSum.isCorrectInput(stringSum)){
             return;
         }
         Double parseSum = parseInputSum.getInstance().getParseSum(stringSum);
