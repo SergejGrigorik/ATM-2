@@ -9,9 +9,9 @@ import com.grigorik.atm.operatetofile.readerfile.ReaderDataBase;
 import java.io.*;
 
 public class StartAtm {
-    public static void main(String[] args) throws IOException {
-        ReadBalanceBank readBalanceBank = ReadBalanceBank.getInstance();
-        ReaderDataBase readerDataBase = ReaderDataBase.getInstance();
+    public static void main(String[] args)  {
+        ReadBalanceBank readBalanceBank = new ReadBalanceBank("src/main/resources/BalanceBank1");
+        ReaderDataBase readerDataBase = new ReaderDataBase( "src/main/resources/DataBaseAtmAuthorization1");
         Bank bank = Bank.getInstance();
         if(bank.getAllSumBalanceCard().compareTo(bank.getBalance()) > 0){
             System.out.println("Банк временно не работает , приносим свои извинения за доставленные неудобства");

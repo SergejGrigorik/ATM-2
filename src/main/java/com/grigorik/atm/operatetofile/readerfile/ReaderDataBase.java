@@ -7,31 +7,19 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 
-public class ReaderDataBase {
+public class ReaderDataBase extends Read {
     private Bank bank = Bank.getInstance();
-    public static ReaderDataBase readerDataBase;
-    private final Read read = Read.getInstance();
 
-    private ReaderDataBase() throws IOException {
+    public ReaderDataBase(String path) {
+        super(path);
         createCard();
     }
 
-    public static ReaderDataBase getInstance(){
-        if (readerDataBase == null) {
-            try {
-                readerDataBase = new ReaderDataBase();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return readerDataBase;
-    }
 
     private void createCard() {
         CardUnfo cardUnfo;
-        String path = "src/main/resources/DataBaseAtmAuthorization1";
         try {
-            for (String string : read.getScanFile(path)) {
+            for (String string : getScanFile()) {
                 cardUnfo = new CardUnfo();
                 String[] dataCard = string.split(" ");
                 String numberCard = dataCard[0].trim();

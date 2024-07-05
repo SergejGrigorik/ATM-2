@@ -4,20 +4,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-public class Read {
-    public static Read read;
+public abstract class Read {
+   private String pathFile;
 
-    private Read()  {
+    public Read (String path) {
+    this.pathFile = path;
     }
 
-    public static Read getInstance() {
-        if (read == null) {
-            read = new Read();
-        }
-        return read;
-    }
-
-    public List<String> getScanFile(String pathFile) throws IOException {
+    public List<String> getScanFile() throws IOException {
         Path path = Path.of( pathFile);
         return Files.readAllLines(path);
     }
