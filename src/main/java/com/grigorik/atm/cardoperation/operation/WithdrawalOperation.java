@@ -33,7 +33,7 @@ public class WithdrawalOperation {
             return;
         }
         BigDecimal parseSum = ParseInputSum.getInstance().getParseSum(stringSum);
-        if (checkSum(parseSum)){
+        if (checkSumCard(parseSum) && checkBakanceBank()){
             cardUnfo.setSum(cardUnfo.getSum().subtract(parseSum));
             bank.setBalance(bank.getBalance().subtract(parseSum));
             System.out.println("Вы успешно сняли деньги");
@@ -42,9 +42,14 @@ public class WithdrawalOperation {
         }
 
     }
-    private boolean checkSum(BigDecimal sum){
 
-        return cardUnfo.getSum().compareTo(sum) >= 0 && cardUnfo.getSum().compareTo(bank.getBalance()) <= 0;
+    private boolean checkBakanceBank() {
+        return  cardUnfo.getSum().compareTo(bank.getBalance()) <= 0;
+    }
+
+    private boolean checkSumCard(BigDecimal sum){
+
+        return cardUnfo.getSum().compareTo(sum) >= 0 ;
     }
 
 

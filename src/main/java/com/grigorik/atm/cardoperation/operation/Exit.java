@@ -25,5 +25,8 @@ public class Exit  {
         System.out.println("Всего доброго");
         exit(0);
     }
+    public void exitAtmError(){
+        exit(0);
+    }
 
 }

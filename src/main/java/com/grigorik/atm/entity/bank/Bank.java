@@ -42,6 +42,13 @@ public class Bank {
     public CardUnfo getCardUnfo(String number) {
         return cards.get(number);
     }
+    public BigDecimal getAllSumBalanceCard(){
+        BigDecimal sum = new BigDecimal("0");
+        for (CardUnfo card : cards.values()) {
+           sum = sum.add(card.getSum());
+        }
+        return sum;
+    }
 
     @Override
     public String toString() {
