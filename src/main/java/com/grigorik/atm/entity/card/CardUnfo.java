@@ -1,9 +1,11 @@
-package com.grigorik.atm.entity;
+package com.grigorik.atm.entity.card;
+
+import java.math.BigDecimal;
 
 public class CardUnfo {
     private String Number;
     private String Password;
-    private double Sum;
+    private BigDecimal Sum;
     private String block;
     private String dateBlock;
     private Integer countInputPassword;
@@ -26,11 +28,11 @@ public class CardUnfo {
     }
 
 
-    public double getSum() {
+    public BigDecimal getSum() {
         return Sum;
     }
 
-    public void setSum(double sum) {
+    public void setSum(BigDecimal sum) {
         Sum = sum;
     }
 

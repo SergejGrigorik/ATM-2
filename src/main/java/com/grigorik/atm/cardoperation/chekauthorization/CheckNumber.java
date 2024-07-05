@@ -1,21 +1,18 @@
-package com.grigorik.atm.chekauthorization;
+package com.grigorik.atm.cardoperation.chekauthorization;
 
-import com.grigorik.atm.bank.Bank;
-import com.grigorik.atm.entity.CardUnfo;
-import com.grigorik.atm.cardoperation.Exit;
+import com.grigorik.atm.entity.bank.Bank;
+import com.grigorik.atm.entity.card.CardUnfo;
+import com.grigorik.atm.cardoperation.operation.Exit;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class CheckNumber {
     private static CheckNumber checkNumber;
-    private Bank bank = Bank.getInstance();
-    private String regex1 = "[0-9]{4}";
-    private String regex = regex1 + "-" + regex1 + "-" + regex1 + "-" + regex1;
-    //    private String a = "[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}";
-    private String block = "block";
-    private String unlocked = "unlocked";
-    private Exit exit = Exit.getInstance();
+    private final Bank bank = Bank.getInstance();
+    private final  String regex = "[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}";
+    private final String unlocked = "unlocked";
+    private final Exit exit = Exit.getInstance();
     private CardUnfo cardUnfo;
 
 
@@ -85,8 +82,7 @@ public class CheckNumber {
 
     private LocalDateTime parseDateBlockCard() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy-HH:mm");
-        LocalDateTime localDateTime = LocalDateTime.parse(cardUnfo.getDateBlock(), formatter);
-        return localDateTime;
+        return LocalDateTime.parse(cardUnfo.getDateBlock(), formatter);
     }
 }
 

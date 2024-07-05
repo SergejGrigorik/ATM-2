@@ -1,25 +1,25 @@
 package com.grigorik.atm.menu;
 
-import com.grigorik.atm.cardoperation.Exit;
-import com.grigorik.atm.cardoperation.PutMoneyOperation;
-import com.grigorik.atm.cardoperation.ShowBalanceOperation;
-import com.grigorik.atm.cardoperation.WithdrawalOperation;
-import com.grigorik.atm.chekauthorization.CheckNumber;
-import com.grigorik.atm.chekauthorization.CheckPassword;
+import com.grigorik.atm.cardoperation.operation.Exit;
+import com.grigorik.atm.cardoperation.operation.PutMoneyOperation;
+import com.grigorik.atm.cardoperation.operation.ShowBalanceOperation;
+import com.grigorik.atm.cardoperation.operation.WithdrawalOperation;
+import com.grigorik.atm.cardoperation.chekauthorization.CheckNumber;
+import com.grigorik.atm.cardoperation.chekauthorization.CheckPassword;
 
 import java.util.Scanner;
 
 public class Menu {
-    private Scanner scanner = new Scanner(System.in);
-    private CheckNumber checkNumber = CheckNumber.getInstance();
-    private CheckPassword checkPassword = CheckPassword.getInstance();
+    private final Scanner scanner = new Scanner(System.in);
+    private final CheckNumber checkNumber = CheckNumber.getInstance();
+    private final CheckPassword checkPassword = CheckPassword.getInstance();
     private String number;
     private String password;
-    private ShowBalanceOperation showBalanceOperation = ShowBalanceOperation.getInstance();
-    private Exit exit = Exit.getInstance();
-    private PutMoneyOperation putMoneyOperation = PutMoneyOperation.getInstance();
-    private WithdrawalOperation withdrawalOperation = WithdrawalOperation.getInstance();
-    private String nonCorrectInput = "Некорректный ввод , выберете операцию из списка";
+    private final ShowBalanceOperation showBalanceOperation = ShowBalanceOperation.getInstance();
+    private final Exit exit = Exit.getInstance();
+    private final PutMoneyOperation putMoneyOperation = PutMoneyOperation.getInstance();
+    private final WithdrawalOperation withdrawalOperation = WithdrawalOperation.getInstance();
+    private final String nonCorrectInput = "Некорректный ввод , выберете операцию из списка";
 
 
     public void inputNumber() {
@@ -39,7 +39,11 @@ public class Menu {
     }
 
     private void operationIfInvalidNumber() {
-        System.out.println("\nВыберете номер операции\n 1.Ввести номер еще раз\n 2.Выход\t");
+        System.out.println("""
+                
+                Выберете номер операции
+                1.Ввести номер еще раз
+                2.Выход""");
         String option = scanner.nextLine();
         switch (option) {
             case "1":
@@ -56,10 +60,10 @@ public class Menu {
     }
 
     public void inputPassword() {
-        System.out.println("\nВведите пароль\t");
+        System.out.println("\nВведите пароль");
         password = scanner.nextLine();
         if (checkPassword.isValidatePassword(password)) {
-            System.out.println("\nПароль введен успешно\t");
+            System.out.println("\nПароль введен успешно");
             choice();
         } else {
             operationIfInvalidPassword();
@@ -67,7 +71,12 @@ public class Menu {
     }
 
     private void operationIfInvalidPassword() {
-        System.out.println("\nВыберете номер операции\n 1.Ввести пароль еще раз\n 2.Выход\t");
+        System.out.println("""
+                               
+                Выберете номер операции:
+                                
+                1.Ввести пароль еще раз
+                2.Выход""");
         String option = scanner.nextLine();
         switch (option) {
             case "1":
@@ -85,23 +94,29 @@ public class Menu {
 
 
     public void choice() {
-        System.out.println("\nВыберете номер операции \n 1.Посмотреть баланс\n 2.Положить деньги на карту\n " +
-                "3.Снять дженьги\n 4.Выход ");
+        System.out.println("""
+                                
+                Выберете номер операции:
+                1.Посмотреть баланс
+                2.Положить деньги на карту
+                3.Снять дженьги
+                4.Выход
+                """);
         String choice = scanner.nextLine();
         switch (choice) {
             case "1":
                 showBalanceOperation.viewBalance(number);
                 nextOrExit();
                 break;
-            case "2" :
+            case "2":
                 nextPutOrBack();
                 nextOrExit();
                 break;
-            case "3" :
+            case "3":
                 nextWithdrawalOrBack();
                 nextOrExit();
                 break;
-            case "4" :
+            case "4":
                 exit.exitAtm();
                 break;
             default:
@@ -112,8 +127,13 @@ public class Menu {
 
 
     }
-    private void nextPutOrBack(){
-        System.out.println("\n1.Вернуться в меню\n2.Ввести сумму");
+
+    private void nextPutOrBack() {
+        System.out.println("""
+                
+                1.Вернуться в меню
+                2.Ввести сумму
+                """);
         String option = scanner.nextLine();
         switch (option) {
             case "1":
@@ -130,8 +150,12 @@ public class Menu {
         }
 
     }
-    private void nextWithdrawalOrBack(){
-        System.out.println("\n1.Вернуться в меню\n2.Ввести сумму");
+
+    private void nextWithdrawalOrBack() {
+        System.out.println("""
+                
+                1.Вернуться в меню
+                2.Ввести сумму""");
         String option = scanner.nextLine();
         switch (option) {
             case "1":
@@ -148,8 +172,12 @@ public class Menu {
         }
 
     }
-    private void nextOrExit(){
-        System.out.println("\n1.Продолжить\n2.Выход");
+
+    private void nextOrExit() {
+        System.out.println("""
+                
+                1.Продолжить
+                2.Выход""");
         String option = scanner.nextLine();
         switch (option) {
             case "1":

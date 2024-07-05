@@ -1,8 +1,8 @@
-package com.grigorik.atm.chekauthorization;
+package com.grigorik.atm.cardoperation.chekauthorization;
 
-import com.grigorik.atm.bank.Bank;
-import com.grigorik.atm.entity.CardUnfo;
-import com.grigorik.atm.cardoperation.Exit;
+import com.grigorik.atm.entity.bank.Bank;
+import com.grigorik.atm.entity.card.CardUnfo;
+import com.grigorik.atm.cardoperation.operation.Exit;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -10,11 +10,11 @@ import java.time.format.DateTimeFormatter;
 public class CheckPassword {
     private static String password;
     private static CheckPassword checkPassword;
-    private Bank bank = Bank.getInstance();
+    private final Bank bank = Bank.getInstance();
     private int countAttempt;
-    private Exit exit = Exit.getInstance();
+    private final Exit exit = Exit.getInstance();
     private CardUnfo cardUnfo;
-    private String block = "block";
+    private final String block = "block";
     private CheckPassword() {
     }
 

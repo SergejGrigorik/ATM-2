@@ -1,15 +1,14 @@
-package com.grigorik.atm.cardoperation;
+package com.grigorik.atm.cardoperation.operation;
 
-import com.grigorik.atm.bank.Bank;
-import com.grigorik.atm.entity.CardUnfo;
+import com.grigorik.atm.entity.bank.Bank;
+import com.grigorik.atm.entity.card.CardUnfo;
 
-import java.util.HashMap;
+
 
 public class ShowBalanceOperation {
-    private Bank bank = Bank.getInstance();
-    private HashMap<String, CardUnfo> cards;
+    private final Bank bank = Bank.getInstance();
     private static ShowBalanceOperation showBalanceOperation;
-    private CardUnfo cardUnfo;
+
 
     private ShowBalanceOperation() {
     }
@@ -22,8 +21,7 @@ public class ShowBalanceOperation {
     }
 
     public void viewBalance(String number) {
-        bank = Bank.getInstance();
-        cardUnfo = bank.getCards().get(number);
+        CardUnfo cardUnfo = bank.getCards().get(number);
         System.out.println("\nВаш баланс составляет - " + cardUnfo.getSum());
     }
 
