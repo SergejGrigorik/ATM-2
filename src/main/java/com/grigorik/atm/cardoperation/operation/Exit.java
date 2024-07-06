@@ -7,8 +7,8 @@ import static java.lang.System.*;
 
 public class Exit  {
     private static  Exit exit;
-    private final WriteDataBase writeDataBase = WriteDataBase.getInstance();
-    private final WriteBalanceBank writeBalanceBank = WriteBalanceBank.getInstance();
+    private  WriteDataBase writeDataBase ;
+    private  WriteBalanceBank writeBalanceBank ;
 
     private Exit() {
     }
@@ -19,9 +19,17 @@ public class Exit  {
         }
         return exit;
     }
+    public void setPathDateBase(String pathDateBase){
+        writeDataBase = WriteDataBase.getInstance(pathDateBase);
+    }
+
+    public void setPathBalanceBank(String pathBalanceBank) {
+        writeBalanceBank = WriteBalanceBank.getInstance(pathBalanceBank);
+    }
+
     public void exitAtm(){
         writeDataBase.updateDateBaseInfoCard();
-        writeBalanceBank.updateDateBaseBalanceCart();
+        writeBalanceBank.updateBalanceBank();
         System.out.println("Всего доброго");
         exit(0);
     }

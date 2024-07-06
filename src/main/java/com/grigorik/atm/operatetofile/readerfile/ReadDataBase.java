@@ -1,18 +1,28 @@
 package com.grigorik.atm.operatetofile.readerfile;
 
+import com.grigorik.atm.cardoperation.operation.Exit;
 import com.grigorik.atm.entity.bank.Bank;
 import com.grigorik.atm.entity.card.CardUnfo;
+import com.grigorik.atm.operatetofile.writefile.WriteDataBase;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 
 
-public class ReaderDataBase extends Read {
+public class ReadDataBase extends Read {
     private Bank bank = Bank.getInstance();
+    private static Read readDataBase;
 
-    public ReaderDataBase(String path) {
+    private ReadDataBase(String path) {
         super(path);
         createCard();
+        Exit.getInstance().setPathDateBase(path);
+    }
+    public static Read getInstance(String path){
+        if(readDataBase == null){
+            readDataBase = new ReadDataBase(path);
+        }
+        return readDataBase;
     }
 
 

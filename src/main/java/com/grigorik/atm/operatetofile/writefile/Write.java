@@ -5,19 +5,14 @@ import com.grigorik.atm.entity.card.CardUnfo;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Write {
-    public static Write write;
+public abstract class Write {
+    private String path;
 
-    private Write(){
+    public Write (String path) {
+        this.path = path;
+    }
 
-    }
-    public static Write getInstance(){
-        if(write == null){
-            write = new Write();
-        }
-        return write;
-    }
-    public FileWriter getFileWriter(String path) {
+    public FileWriter getFileWriter() {
         try {
             return new FileWriter(path, false);
         } catch (IOException e) {

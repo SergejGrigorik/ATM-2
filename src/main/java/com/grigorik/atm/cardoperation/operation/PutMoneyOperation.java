@@ -9,13 +9,13 @@ import com.grigorik.atm.utility.parse.ParseInputSum;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-public class PutMoneyOperation {
+public class PutMoneyOperation implements OperationInterf{
     private static PutMoneyOperation instance;
     private final Scanner scanner = new Scanner(System.in);
     private final Bank bank = Bank.getInstance();
     private final ValidationInputSum validationInputSum = ValidationInputSum.getInstance();
     private final BigDecimal limit = new BigDecimal("1000000");
-    WriteDataBase w = WriteDataBase.getInstance();
+
 
     private PutMoneyOperation() {
 
@@ -49,5 +49,8 @@ public class PutMoneyOperation {
     }
 
 
+    @Override
+    public void execute() {
 
+    }
 }

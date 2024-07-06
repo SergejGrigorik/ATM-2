@@ -7,23 +7,23 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
-public class WriteDataBase {
+public class WriteDataBase extends Write {
     private final Bank bank = Bank.getInstance();
     private static WriteDataBase writeDataBase;
-    private Write write = Write.getInstance();
-    private String path = "src/main/resources/DataBaseAtmAuthorization1";
+    private String path;
 
-    private WriteDataBase() {
+    private WriteDataBase (String path) {
+        super(path);
     }
 
-    public static WriteDataBase getInstance() {
+    public static WriteDataBase getInstance(String path) {
         if (writeDataBase == null) {
-            writeDataBase = new WriteDataBase();
+            writeDataBase = new WriteDataBase(path);
         }
         return writeDataBase;
     }
     public void updateDateBaseInfoCard() {
-        try (FileWriter writer = write.getFileWriter(path)) {
+        try (FileWriter writer = getFileWriter()) {
             for (CardUnfo card : bank.getCards().values()) {
                 writer.write(card.toString() + '\n');
             }
