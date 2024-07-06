@@ -1,11 +1,12 @@
 package com.grigorik.atm.cardoperation.operation;
 
+import com.grigorik.atm.cardoperation.operation.interfaces.OperationInterf;
 import com.grigorik.atm.entity.bank.Bank;
 import com.grigorik.atm.entity.card.CardUnfo;
 
 
 
-public class ShowBalanceOperation {
+public class ShowBalanceOperation implements OperationInterf {
     private final Bank bank = Bank.getInstance();
     private static ShowBalanceOperation showBalanceOperation;
 
@@ -25,4 +26,8 @@ public class ShowBalanceOperation {
         System.out.println("\nВаш баланс составляет - " + cardUnfo.getSum());
     }
 
+    @Override
+    public void execute(String number) {
+        viewBalance(number);
+    }
 }

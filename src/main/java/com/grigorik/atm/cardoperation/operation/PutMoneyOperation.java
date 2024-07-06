@@ -1,7 +1,7 @@
 package com.grigorik.atm.cardoperation.operation;
 
+import com.grigorik.atm.cardoperation.operation.interfaces.OperationInterf;
 import com.grigorik.atm.entity.bank.Bank;
-import com.grigorik.atm.operatetofile.writefile.WriteDataBase;
 import com.grigorik.atm.utility.chekcorrectinputsum.ValidationInputSum;
 import com.grigorik.atm.entity.card.CardUnfo;
 import com.grigorik.atm.utility.parse.ParseInputSum;
@@ -9,7 +9,7 @@ import com.grigorik.atm.utility.parse.ParseInputSum;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-public class PutMoneyOperation implements OperationInterf{
+public class PutMoneyOperation implements OperationInterf {
     private static PutMoneyOperation instance;
     private final Scanner scanner = new Scanner(System.in);
     private final Bank bank = Bank.getInstance();
@@ -50,7 +50,7 @@ public class PutMoneyOperation implements OperationInterf{
 
 
     @Override
-    public void execute() {
-
+    public void execute(String number) {
+        addMoneyDeposit(number);
     }
 }

@@ -1,11 +1,12 @@
 package com.grigorik.atm.cardoperation.operation;
 
+import com.grigorik.atm.cardoperation.operation.interfaces.OperationInterf;
 import com.grigorik.atm.operatetofile.writefile.WriteBalanceBank;
 import com.grigorik.atm.operatetofile.writefile.WriteDataBase;
 
 import static java.lang.System.*;
 
-public class Exit  {
+public class Exit  implements OperationInterf {
     private static  Exit exit;
     private  WriteDataBase writeDataBase ;
     private  WriteBalanceBank writeBalanceBank ;
@@ -37,4 +38,8 @@ public class Exit  {
         exit(0);
     }
 
+    @Override
+    public void execute(String number) {
+        exitAtm();
+    }
 }
