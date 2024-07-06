@@ -8,6 +8,7 @@ public class Default implements OperationInterf {
         if (Default == null) {
             Default = new Default();
         }
+
         return Default;
     }
     @Override
