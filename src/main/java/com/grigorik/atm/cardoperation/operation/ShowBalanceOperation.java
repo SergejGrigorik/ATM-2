@@ -1,12 +1,13 @@
 package com.grigorik.atm.cardoperation.operation;
 
-import com.grigorik.atm.cardoperation.operation.interfaces.OperationInterf;
+import com.grigorik.atm.cardoperation.operation.interfaces.AbstractMenu;
+import com.grigorik.atm.cardoperation.operation.interfaces.Operation;
 import com.grigorik.atm.entity.bank.Bank;
 import com.grigorik.atm.entity.card.CardUnfo;
 
 
 
-public class ShowBalanceOperation implements OperationInterf {
+public class ShowBalanceOperation extends AbstractMenu implements Operation {
     private final Bank bank = Bank.getInstance();
     private static ShowBalanceOperation showBalanceOperation;
 
@@ -29,5 +30,6 @@ public class ShowBalanceOperation implements OperationInterf {
     @Override
     public void execute(String number) {
         viewBalance(number);
+        nextOrExit();
     }
 }

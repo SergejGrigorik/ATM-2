@@ -1,16 +1,16 @@
 package com.grigorik.atm.cardoperation.operation;
 
-import com.grigorik.atm.cardoperation.operation.interfaces.OperationInterf;
+import com.grigorik.atm.cardoperation.operation.interfaces.Operation;
 
 public class ChoiceOperation {
-    private OperationInterf operationInterf;
+    private Operation operation;
 
-    public ChoiceOperation(OperationInterf operationInterf) {
-        this.operationInterf = operationInterf;
+    public ChoiceOperation(Operation operation) {
+        this.operation = operation;
     }
 
 
     public void operation(String number) {
-        operationInterf.execute(number);
+        operation.execute(number);
     }
 }

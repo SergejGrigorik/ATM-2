@@ -3,10 +3,14 @@ package com.grigorik.atm.menu;
 import com.grigorik.atm.cardoperation.operation.*;
 import com.grigorik.atm.cardoperation.chekauthorization.CheckNumber;
 import com.grigorik.atm.cardoperation.chekauthorization.CheckPassword;
-import com.grigorik.atm.cardoperation.operation.interfaces.OperationInterf;
+import com.grigorik.atm.cardoperation.operation.interfaces.AbstractMenu;
+import com.grigorik.atm.cardoperation.operation.interfaces.Operation;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static java.lang.Integer.parseInt;
 
@@ -16,15 +20,15 @@ public class Menu {
     private final CheckPassword checkPassword = CheckPassword.getInstance();
     private String number;
     private String password;
-    private final OperationInterf showBalanceOperation = ShowBalanceOperation.getInstance();
-    private final OperationInterf exit = Exit.getInstance();
-    private final OperationInterf putMoneyOperation = PutMoneyOperation.getInstance();
-    private final OperationInterf withdrawalOperation = WithdrawalOperation.getInstance();
+    private final Operation exit = Exit.getInstance();
     private final String nonCorrectInput = "Некорректный ввод , выберете операцию из списка";
-    private  ChoiceOperation choiceOperation ;
+    private Map<Integer,OperationEnum> choice20peration = Arrays.stream(OperationEnum.values())
+            .collect(Collectors.toMap(OperationEnum::getValue, Function.identity()));
+    private AbstractMenu abstractMenu = AbstractMenu.getAbstractMenu();
 
 
     public void inputNumber() {
+        abstractMenu.setMenu(this);
         System.out.println("\nВведите номер карточки согласно формату : ХХХХ-ХХХХ-ХХХХ-ХХХХ):\t");
         chekInputNumber();
     }
@@ -105,107 +109,9 @@ public class Menu {
                 4.Выход
                 """);
         String choice = scanner.nextLine();
-        OperationEnum operationEnum  = OperationEnum.DEFAULT;
-        for (OperationEnum operation : OperationEnum.values()) {
-            if(!choice.matches("[0-9]+")){
-                operationEnum = OperationEnum.DEFAULT;
-            }else if (operation.getValue() == parseInt(choice)) {
-                operationEnum = operation;
-            }
-        }
-        choiceOperation  = new ChoiceOperation(operationEnum.getOperation());
-        switch (operationEnum) {
-            case SHOW:
-                choiceOperation.operation(number);
-                nextOrExit();
-                break;
-            case PUT:
-                nextPutOrBack();
-                choiceOperation.operation(number);
-                nextOrExit();
-                break;
-            case WITHDRAWAL:
-                nextWithdrawalOrBack();
-                choiceOperation.operation(number);
-                nextOrExit();
-                break;
-            case EXIT:
-                choiceOperation.operation(number);
-                break;
-            case DEFAULT:
-                System.out.println(nonCorrectInput);
-                choice();
-                break;
-        }
-
-
+        OperationEnum operationEnum = choice20peration.getOrDefault(Integer.parseInt(choice), OperationEnum.DEFAULT);
+        operationEnum.getOperation().execute(number);
+        choice();
     }
 
-    private void nextPutOrBack() {
-        System.out.println("""
-                                
-                1.Вернуться в меню
-                2.Ввести сумму
-                """);
-        String option = scanner.nextLine();
-        switch (option) {
-            case "1":
-                choice();
-                break;
-            case "2":
-//                putMoneyOperation.execute(number);
-                return;
-//                break;
-            default:
-                System.out.println(nonCorrectInput);
-                nextPutOrBack();
-                break;
-
-        }
-
-    }
-
-    private void nextWithdrawalOrBack() {
-        System.out.println("""
-                                
-                1.Вернуться в меню
-                2.Ввести сумму""");
-        String option = scanner.nextLine();
-        switch (option) {
-            case "1":
-                choice();
-                break;
-            case "2":
-                return;
-//                withdrawalOperation.execute(number);
-//                break;
-            default:
-                System.out.println(nonCorrectInput);
-                nextWithdrawalOrBack();
-                break;
-
-        }
-
-    }
-
-    private void nextOrExit() {
-        System.out.println("""
-                                
-                1.Продолжить
-                2.Выход""");
-        String option = scanner.nextLine();
-        switch (option) {
-            case "1":
-                choice();
-                break;
-            case "2":
-                exit.execute(number);
-                break;
-            default:
-                System.out.println(nonCorrectInput);
-                nextOrExit();
-                break;
-
-        }
-    }
 }

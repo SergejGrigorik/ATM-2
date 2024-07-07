@@ -1,8 +1,8 @@
 package com.grigorik.atm.cardoperation.operation;
 
-import com.grigorik.atm.cardoperation.operation.interfaces.OperationInterf;
+import com.grigorik.atm.cardoperation.operation.interfaces.Operation;
 
-public class Default implements OperationInterf {
+public class Default implements Operation {
     private static Default Default;
     public static Default getInstance() {
         if (Default == null) {

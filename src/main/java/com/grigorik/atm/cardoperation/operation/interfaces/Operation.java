@@ -1,5 +1,5 @@
 package com.grigorik.atm.cardoperation.operation.interfaces;
 
-public interface OperationInterf {
+public interface Operation {
     void execute(String number);
 }

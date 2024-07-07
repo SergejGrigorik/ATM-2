@@ -1,25 +1,27 @@
 package com.grigorik.atm.cardoperation.operation;
 
-import com.grigorik.atm.cardoperation.operation.interfaces.OperationInterf;
+import com.grigorik.atm.cardoperation.operation.interfaces.Operation;
 
 public enum OperationEnum {
-    SHOW(1,ShowBalanceOperation.getInstance()),PUT(2,PutMoneyOperation.getInstance()),
-    WITHDRAWAL(3,WithdrawalOperation.getInstance()),EXIT(4,Exit.getInstance()),
+    SHOW(1,ShowBalanceOperation.getInstance()),
+    PUT(2,PutMoneyOperation.getInstance()),
+    WITHDRAWAL(3,WithdrawalOperation.getInstance()),
+    EXIT(4,Exit.getInstance()),
     DEFAULT(5,Default.getInstance());
 
     private int value;
-    public OperationInterf operationInterf;
+    public Operation operation;
 
-    OperationEnum(int value, OperationInterf operationInterf) {
+    OperationEnum(int value, Operation operation) {
         this.value = value;
-        this.operationInterf = operationInterf;
+        this.operation = operation;
     }
 
     public int getValue() {
         return value;
     }
-    public OperationInterf getOperation() {
-        return operationInterf;
+    public Operation getOperation() {
+        return operation;
     }
 
 }
