@@ -1,0 +1,1 @@
+java ../target/classes/com/grigorik/atm/StartAtm
