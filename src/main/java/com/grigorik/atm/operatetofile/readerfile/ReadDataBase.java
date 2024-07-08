@@ -1,13 +1,9 @@
 package com.grigorik.atm.operatetofile.readerfile;
-
 import com.grigorik.atm.cardoperation.operation.Exit;
 import com.grigorik.atm.entity.bank.Bank;
 import com.grigorik.atm.entity.card.CardUnfo;
-import com.grigorik.atm.operatetofile.writefile.WriteDataBase;
-
 import java.io.IOException;
 import java.math.BigDecimal;
-
 
 public class ReadDataBase extends Read {
     private Bank bank = Bank.getInstance();

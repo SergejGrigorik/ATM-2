@@ -13,7 +13,6 @@ public class ParseInputSum {
         return parseInputSum;
     }
 
-
     public BigDecimal getParseSum(String input) {
         if (input.contains(",")) {
             String parseSum = input.replace(",", ".");

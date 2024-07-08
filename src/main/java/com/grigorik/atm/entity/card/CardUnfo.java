@@ -18,7 +18,6 @@ public class CardUnfo {
         this.countInputPassword = countInputPassword;
     }
 
-
     public String getDateBlock() {
         return dateBlock;
     }

@@ -1,7 +1,6 @@
 package com.grigorik.atm.operatetofile.writefile;
 
 import com.grigorik.atm.entity.bank.Bank;
-
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -19,7 +18,6 @@ public class WriteBalanceBank extends Write {
         }
         return writeBalanceBank;
     }
-
 
     public void updateBalanceBank() {
         try (FileWriter writer = getFileWriter()) {

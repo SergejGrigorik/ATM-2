@@ -3,14 +3,13 @@ package com.grigorik.atm.cardoperation.chekauthorization;
 import com.grigorik.atm.entity.bank.Bank;
 import com.grigorik.atm.entity.card.CardUnfo;
 import com.grigorik.atm.cardoperation.operation.Exit;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class CheckNumber {
     private static CheckNumber checkNumber;
     private final Bank bank = Bank.getInstance();
-    private final  String regex = "[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}";
+    private final String regex = "[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}";
     private final String unlocked = "unlocked";
     private final Exit exit = Exit.getInstance();
     private CardUnfo cardUnfo;
@@ -65,19 +64,19 @@ public class CheckNumber {
 
     private boolean isBlock(String numberInput) {
         cardUnfo = bank.getCards().get(numberInput);
-        if (cardUnfo.getBlock().equals(unlocked) || checkDateBlock()){
+        if (cardUnfo.getBlock().equals(unlocked) || checkDateBlock()) {
             return false;
         }
         return true;
     }
 
     private boolean checkDateBlock() {
-        if (parseDateBlockCard().isBefore(LocalDateTime.now())){
+        if (parseDateBlockCard().isBefore(LocalDateTime.now())) {
             cardUnfo.setBlock(unlocked);
             cardUnfo.setDateBlock("-");
             return true;
         }
-            return false;
+        return false;
     }
 
     private LocalDateTime parseDateBlockCard() {

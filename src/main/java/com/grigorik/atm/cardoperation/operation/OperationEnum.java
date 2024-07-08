@@ -1,5 +1,4 @@
 package com.grigorik.atm.cardoperation.operation;
-
 import com.grigorik.atm.cardoperation.operation.interfaces.Operation;
 
 public enum OperationEnum {

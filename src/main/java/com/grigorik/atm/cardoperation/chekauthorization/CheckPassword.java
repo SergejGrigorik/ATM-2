@@ -3,7 +3,6 @@ package com.grigorik.atm.cardoperation.chekauthorization;
 import com.grigorik.atm.entity.bank.Bank;
 import com.grigorik.atm.entity.card.CardUnfo;
 import com.grigorik.atm.cardoperation.operation.Exit;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

@@ -1,8 +1,6 @@
 package com.grigorik.atm.operatetofile.readerfile;
-
 import com.grigorik.atm.cardoperation.operation.Exit;
 import com.grigorik.atm.entity.bank.Bank;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 

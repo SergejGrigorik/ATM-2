@@ -3,9 +3,7 @@ package com.grigorik.atm.menu;
 import com.grigorik.atm.cardoperation.operation.*;
 import com.grigorik.atm.cardoperation.chekauthorization.CheckNumber;
 import com.grigorik.atm.cardoperation.chekauthorization.CheckPassword;
-import com.grigorik.atm.cardoperation.operation.interfaces.AbstractMenu;
 import com.grigorik.atm.cardoperation.operation.interfaces.Operation;
-
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
@@ -24,11 +22,20 @@ public class Menu {
     private final String nonCorrectInput = "Некорректный ввод , выберете операцию из списка";
     private Map<Integer,OperationEnum> choice20peration = Arrays.stream(OperationEnum.values())
             .collect(Collectors.toMap(OperationEnum::getValue, Function.identity()));
-    private AbstractMenu abstractMenu = AbstractMenu.getAbstractMenu();
+
+    private static Menu menu;
+
+    private Menu(){}
+
+    public static Menu getInstance(){
+        if (menu == null){
+            menu = new Menu();
+        }
+        return menu;
+    }
 
 
     public void inputNumber() {
-        abstractMenu.setMenu(this);
         System.out.println("\nВведите номер карточки согласно формату : ХХХХ-ХХХХ-ХХХХ-ХХХХ):\t");
         chekInputNumber();
     }

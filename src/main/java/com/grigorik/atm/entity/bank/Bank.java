@@ -1,8 +1,6 @@
 package com.grigorik.atm.entity.bank;
-
 import com.grigorik.atm.cardoperation.operation.Exit;
 import com.grigorik.atm.entity.card.CardUnfo;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;

@@ -1,12 +1,10 @@
 package com.grigorik.atm.cardoperation.operation;
 
-import com.grigorik.atm.cardoperation.operation.interfaces.AbstractMenu;
 import com.grigorik.atm.cardoperation.operation.interfaces.Operation;
 import com.grigorik.atm.entity.bank.Bank;
 import com.grigorik.atm.utility.chekcorrectinputsum.ValidationInputSum;
 import com.grigorik.atm.entity.card.CardUnfo;
 import com.grigorik.atm.utility.parse.ParseInputSum;
-
 import java.math.BigDecimal;
 import java.util.Scanner;
 
@@ -53,7 +51,6 @@ public class WithdrawalOperation extends AbstractMenu implements Operation {
 
         return cardUnfo.getSum().compareTo(sum) >= 0 ;
     }
-
 
     @Override
     public void execute(String number) {

@@ -2,10 +2,8 @@ package com.grigorik.atm.operatetofile.writefile;
 
 import com.grigorik.atm.entity.bank.Bank;
 import com.grigorik.atm.entity.card.CardUnfo;
-
 import java.io.FileWriter;
 import java.io.IOException;
-
 
 public class WriteDataBase extends Write {
     private final Bank bank = Bank.getInstance();

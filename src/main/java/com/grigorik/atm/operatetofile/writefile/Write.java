@@ -1,14 +1,11 @@
 package com.grigorik.atm.operatetofile.writefile;
-
-import com.grigorik.atm.entity.card.CardUnfo;
-
 import java.io.FileWriter;
 import java.io.IOException;
 
 public abstract class Write {
     private String path;
 
-    public Write (String path) {
+    public Write(String path) {
         this.path = path;
     }
 

@@ -1,8 +1,6 @@
-package com.grigorik.atm.cardoperation.operation.interfaces;
-
-import com.grigorik.atm.cardoperation.operation.Exit;
+package com.grigorik.atm.cardoperation.operation;
+import com.grigorik.atm.cardoperation.operation.interfaces.Operation;
 import com.grigorik.atm.menu.Menu;
-
 import java.util.Scanner;
 
 public class AbstractMenu {
@@ -11,9 +9,9 @@ public class AbstractMenu {
     private static  AbstractMenu abstractMenu;
     private final Operation exit = Exit.getInstance();
     private String number;
-    private Menu menu ;
 
     protected AbstractMenu(){
+
     }
     public static AbstractMenu getAbstractMenu(){
 
@@ -24,9 +22,6 @@ public class AbstractMenu {
         return abstractMenu;
     }
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
 
     public void nextPutOrBack() {
         System.out.println("""
@@ -37,7 +32,7 @@ public class AbstractMenu {
         String option = scanner.nextLine();
         switch (option) {
             case "1":
-//                menu.choice();
+                Menu.getInstance().choice();
                 break;
             case "2":
                 return;
@@ -58,7 +53,7 @@ public class AbstractMenu {
         String option = scanner.nextLine();
         switch (option) {
             case "1":
-//                menu.choice();
+                Menu.getInstance().choice();
                 break;
             case "2":
                 return;
@@ -79,7 +74,7 @@ public class AbstractMenu {
         String option = scanner.nextLine();
         switch (option) {
             case "1":
-//                menu.choice();
+                Menu.getInstance().choice();
                 break;
             case "2":
                 exit.execute(number);
